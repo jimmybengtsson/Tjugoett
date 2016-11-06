@@ -11,7 +11,7 @@
 
 const Deal = require('./Deck.js');
 
-let Player = function() {
+let Dealer = function() {
 
   let cards = [];
 
@@ -42,5 +42,5 @@ let Player = function() {
   return cards;
 };
 
-module.exports = Player;
+module.exports = Dealer;
 

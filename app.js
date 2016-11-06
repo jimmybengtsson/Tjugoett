@@ -10,16 +10,16 @@
 "use strict";
 
 const Player  = require('./src/Player.js');
-let _player = Player();
+const Dealer  = require('./src/Player.js');
 
-function Game(playerBusted) {
+function Game21() {
 
-  Object.defineProperty (this, 'playerBusted', {
-    get: function() {
-      return _player.score > 21;
-    }
-  });
+  let playerBusted = function() {
+    return score > 21;
+  };
 }
+console.log(Player());
+console.log(Dealer());
 
 Player.prototype.toString = function() {
   if (this.value === 14 && this.color === '♠') {
