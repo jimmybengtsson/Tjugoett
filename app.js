@@ -9,8 +9,9 @@
 
 "use strict";
 
+const newCard = require('./src/Deck.js');
+const Player  = require('./src/Player.js');
 
-const shuffle = require('./src/cards.js');
 
 
 
