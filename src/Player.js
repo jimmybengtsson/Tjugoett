@@ -9,26 +9,39 @@
 
 'use strict';
 
-const newCard = require('./Deck.js');
+const Deal = require('./Deck.js');
 
-function Player() {
+let Player = function() {
 
-  let test = newCard;
-  let test1 = newCard;
-  let hand = [];
-  hand.count = 0;
-  hand.push(newCard);
+  let cards = [];
 
+  cards.push(new Deal(), new Deal());
 
+  let score = function() {
+    let score = 0;
+    let cardValue = 0;
+    let aces = 0;
 
-}
-console.log(test);
+    for (let i = 0; i < cards.length; i++) {
+      cardValue = cards[i].value;
+      if (cardValue === 14) {
+        aces += 1;
+      }
+      score += cardValue;
+    }
+    while (score > 21 && aces > 0) {
+      score -= 13;
+      aces -= 1;
+    }
+    return score;
+  };
 
-Player.prototype.toString = function() {
-  if (this.value === 14 && this.color === '♠') {
-    return ' ♠A';
-  } else {
-    return ' ' + this.color + '' + this.number;
+  while (score < 16 && cards.length < 5) {
+    cards.push(new Deal());
   }
+  return cards;
 };
 
+module.exports = Player;
+
+console.log(Player());

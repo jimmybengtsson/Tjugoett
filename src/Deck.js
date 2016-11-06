@@ -50,13 +50,10 @@ Array.prototype.shuffle = function() {
 let newDeck = new Deck();
 let finaleDeck = newDeck.fullDeck.shuffle();
 
-Array.prototype.deal = function() {
+function Deal() {
   if (finaleDeck.length > 1) {
     return finaleDeck.shift();
   }
-};
+}
 
-let newCard = finaleDeck.deal();
-
-module.exports = newCard;
-
+module.exports = Deal;
