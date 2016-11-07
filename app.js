@@ -7,24 +7,17 @@
  *
  */
 
-"use strict";
+'use strict';
 
-const Player  = require('./src/Player.js');
-const Dealer  = require('./src/Player.js');
+let Player  = require('./src/Player.js');
 
-function Game21() {
+let player = new Player();
+let dealer = new Player();
 
-  let playerBusted = function() {
-    return score > 21;
-  };
-}
-console.log(Player());
-console.log(Dealer());
+console.log(player.cards);
+console.log(player.score);
+console.log(dealer.cards);
+console.log(dealer.score);
 
-Player.prototype.toString = function() {
-  if (this.value === 14 && this.color === '♠') {
-    return ' ♠A';
-  } else {
-    return ' ' + this.color + '' + this.number;
-  }
-};
+
+
