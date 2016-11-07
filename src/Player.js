@@ -11,7 +11,7 @@
 
 const Deal = require('./Deal.js');
 
-function Player(cards = [], score) {
+function Player(cards = []) {
 
   Object.defineProperty(this, 'cards', {
     get: function() {
@@ -72,17 +72,21 @@ function Player(cards = [], score) {
           aces -= 1;
         }
         return score;
+      }
+  });
+
+  Object.defineProperty(this, 'hand', {
+    get: function() {
+      let result = [];
+      for (let i = 0; i < cards.length; i++) {
+        if (cards[i].card) {
+          result.push(cards[i].card);
+        }
+      }
+      return result.join(' ');
     }
   });
 }
 
-Player.prototype.toString = function() {
- if (this.cards.value === 14 && this.cards.color === '♠') {
- return ' ♠A';
- } else {
- return ' ' + this.cards.color + '' + this.cards.number;
- }
- };
 
 module.exports = Player;
-

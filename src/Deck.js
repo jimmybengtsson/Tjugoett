@@ -9,10 +9,11 @@
 
 'use strict';
 
-function Card(value, number, color) {
+function Card(value, number, color, card) {
   this.value = value;
   this.number = number;
   this.color = color;
+  this.card = color + number;
 
 }
 
