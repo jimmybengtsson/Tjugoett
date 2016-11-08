@@ -11,7 +11,11 @@
 
 const Deal = require('./Deal.js');
 
+// Skapa en spelare.
+
 function Player(cards = []) {
+
+  // Skapa en hand. I settern har jag med att det ska dras ett kort så länge summan är under 16.
 
   Object.defineProperty(this, 'cards', {
     get: function() {
@@ -52,6 +56,8 @@ function Player(cards = []) {
 
   this.cards = cards;
 
+  // Sammanlagda poängen för korten på handen.
+
   Object.defineProperty(this, 'score', {
     get: function() {
         let i;
@@ -75,6 +81,8 @@ function Player(cards = []) {
       }
   });
 
+  // Visar aktuell spelhand så som jag vill skriva ut den.
+
   Object.defineProperty(this, 'hand', {
     get: function() {
       let result = [];
@@ -83,7 +91,7 @@ function Player(cards = []) {
           result.push(cards[i].card);
         }
       }
-      return result.join(' ');
+      return result.join('  ');
     }
   });
 }

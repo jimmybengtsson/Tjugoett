@@ -11,10 +11,14 @@
 
 const Player  = require('./src/Player.js');
 
+// Skapa ett nytt spel.
+
 function Game() {
 
   let _player = new Player();
   let _dealer = new Player();
+
+  // Spelarens hand.
 
   Object.defineProperty(this, 'player', {
     get: function() {
@@ -22,11 +26,15 @@ function Game() {
     }
   });
 
+  // Givens hand.
+
   Object.defineProperty(this, 'dealer', {
     get: function() {
       return _dealer.hand;
     }
   });
+
+  // Spelarens poäng.
 
   Object.defineProperty(this, 'playerScore', {
     get: function() {
@@ -34,17 +42,23 @@ function Game() {
     }
   });
 
+  // Givens poäng.
+
   Object.defineProperty(this, 'dealerScore', {
     get: function() {
       return _dealer.score;
     }
   });
 
+  // Spelaren har över 21.
+
   Object.defineProperty(this, 'playerBusted', {
     get: function() {
       return _player.score > 21;
     }
   });
+
+  // Given har över 21.
 
   Object.defineProperty(this, 'dealerBusted', {
     get: function() {
@@ -53,23 +67,29 @@ function Game() {
   });
 }
 
+// Få ihop allt till en sträng som visas.
+
 Game.prototype.toString = function() {
 
   if (this.playerBusted === true) {
-    return 'Player: ' + this.player + ' (' + this.playerScore + ') ' + 'Busted!' + '\n' +
-        'Dealer: ---' + '\n' + 'Dealer wins!';
+    return '\n' + 'Player: ' + this.player + ' (' + this.playerScore + ') ' + 'Busted!' + '\n' + '\n' +
+        'Dealer: ---' + '\n' + '\n' + 'Dealer wins!';
+  }
+  else if (this.playerScore === 21) {
+    return '\n' + 'Player: ' + this.player + ' (' + this.playerScore + ') ' + '\n' + '\n' +
+      'Dealer: ---' + '\n' + '\n' + 'Player wins!';
   }
   else if (this.playerBusted === false && this.dealerBusted === true) {
-    return 'Player: ' + this.player + ' (' + this.playerScore + ')' + '\n' +
-      'Dealer: ' + this.dealer + ' ' + ' (' + this.dealerScore + ') ' + 'Busted!' + '\n' + 'Player wins!';
+    return '\n' + 'Player: ' + this.player + ' (' + this.playerScore + ')' + '\n' + '\n' +
+      'Dealer: ' + this.dealer + ' ' + ' (' + this.dealerScore + ') ' + 'Busted!' + '\n' + '\n' + 'Player wins!';
   }
-  else if (this.playerScore === 21 || this.playerScore > this.dealerScore || this.player.length === 5 && this.playerScore < 21) {
-    return 'Player: ' + this.player + ' (' + this.playerScore + ')' + '\n' +
-      'Dealer: ' + this.dealer + ' ' + ' (' + this.dealerScore + ') ' + '\n' + 'Player wins!';
+  else if (this.playerScore > this.dealerScore || this.player.length === 5 && this.playerScore < 21) {
+    return '\n' + 'Player: ' + this.player + ' (' + this.playerScore + ')' + '\n' + '\n' +
+      'Dealer: ' + this.dealer + ' ' + ' (' + this.dealerScore + ') ' + '\n' + '\n' + 'Player wins!';
   }
   else {
-    return 'Player: ' + this.player + ' (' + this.playerScore + ')' + '\n' +
-      'Dealer: ' + this.dealer + ' ' + ' (' + this.dealerScore + ') ' + '\n' + 'Dealer wins!';
+    return '\n' + 'Player: ' + this.player + ' (' + this.playerScore + ')' + '\n' + '\n' +
+      'Dealer: ' + this.dealer + ' ' + ' (' + this.dealerScore + ') ' + '\n' + '\n' + 'Dealer wins!';
   }
 };
 

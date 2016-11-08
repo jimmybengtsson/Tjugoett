@@ -11,7 +11,7 @@
 
 const Deck = require('./Deck.js');
 
-// Använder mig av Fisher-Yates metod för att göra en metod som kan blanda korten.
+// Använder mig av Fisher-Yates metod för att  blanda korten.
 
 Array.prototype.shuffle = function() {
 
@@ -29,6 +29,8 @@ Array.prototype.shuffle = function() {
 
 let newDeck = new Deck();
 let finaleDeck = newDeck.fullDeck.shuffle();
+
+// Dela kort. Ta det första kortet i arrayen (kortleken).
 
 function Deal() {
   if (finaleDeck.length > 1) {

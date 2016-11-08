@@ -9,7 +9,9 @@
 
 'use strict';
 
-function Card(value, number, color, card) {
+// Skapa kort
+
+function Card(value, number, color) {
   this.value = value;
   this.number = number;
   this.color = color;
@@ -31,6 +33,5 @@ function Deck() {
     }
   }
 }
-
 
 module.exports = Deck;
